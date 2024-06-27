@@ -1,0 +1,2 @@
+FAQ по psqlODBC  https://odbc.postgresql.org/faq.html#1.3
+интеграция постгре с ораклом  https://habr.com/ru/companies/otus/articles/817187/
