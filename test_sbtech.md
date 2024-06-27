@@ -3,9 +3,11 @@
 **psqlODBC** — официальный драйвер ODBC PostgreSQL. Драйвер позволяет производить операции над данными, используя стороннее ПО.
 
 # Использование данных из СУБД PostgreSQL в стороннем ПО 
-Для использования в стороннем ПО данных из СУБД PostgreSQL необходимо установить драйвер psqlODBC. Драйвер можно скачать на сайте [название](https://www.postgresql.org/ftp/odbc/releases/). 
+Для использования в стороннем ПО данных из СУБД PostgreSQL необходимо установить драйвер psqlODBC. Драйвер можно скачать на сайте [PostgreSQL](https://www.postgresql.org/ftp/odbc/releases/). 
 
 Внимание! При скачивании драйвера обратите внимание на разрядность: она должна быть такой же, как и разрядность приложения, *которому нужен доступ*. *впихнуть про ошибку*
+
+При проблемах с установкой драйвера следует проверить разрядность, версии. Также можно посетить страницу сайта PostgreSQL, на которой собраны частые вопросы [ссылка](https://odbc.postgresql.org/faq.html).
 
 ## Установка драйвера psqlODBC в Windows 
 Примечание. Рекомендуется установка из msi-пакета.
@@ -24,8 +26,28 @@ c:\windows\system32\odbcad32.exe
 
 ## Установка драйвера psqlODBC в Unix-подобных системах 
 
+Примечание. При скачивании обратите внимание на установленную ОС 
 
+В файле настройки .odbc.ini пропишите следующие ..? 
+```
+[ODBC Data Sources]
+  Product = PostgreSQL
+[Product]
+  Debug = 1
+  CommLog = 1
+  ReadOnly = no
+  Driver = /usr/pgsql-9.1/lib/psqlodbc.so
+  Servername = <PostgreSQL_IP>
+  FetchBufferSize = 99
+  Username = <user>
+  Password = <pass>
+  Port = 5432
+  Database = <db_name>
+[Default]
+  Driver = /usr/lib64/liboplodbcS.so.1
 
+```
+Примечание про юзернейм, пассворд и бд. 
 
 
 # dblink оракл-постгре
